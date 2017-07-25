@@ -1,18 +1,23 @@
-<html>
+<?php
 
-<head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<title>Add a Vendor</title>
-</head>
+include "includes/db.php";
+include "includes/functions.php";
+include "includes/header.php";
 
-<body>
-	<div class="container">
-		<form action="addvendordb.php" method="post">
-			<input type="text" name="name" class="form-control">
-			<button type="submit" name="addvendor" class="btn btn-danger">Add Vendor</button>
-		</form>
+createVendor();
+
+?>
+
+<?php if(isset($_SESSION['message'])) { ?>
+<h4 class="text-danger"><?php echo $_SESSION['message']; ?></h5>
+<?php } ?>
+
+<form action="addvendor.php" method="post">
+	<div class="form-group">
+		<label for="name">Vendor's Name</label>
+		<input type="text" name="name" class="form-control">
 	</div>
-</body>
+	<input type="submit" name="submit" class="btn btn-primary" value="CREATE">
+</form>
 
-</html>
+<?php include "includes/footer.php"; ?>
